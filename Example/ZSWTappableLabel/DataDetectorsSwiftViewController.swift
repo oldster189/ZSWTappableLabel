@@ -17,7 +17,7 @@ class DataDetectorsSwiftViewController: UIViewController, ZSWTappableLabelTapDel
         return label
     }()
     
-    static let TextCheckingResultAttributeName = NSAttributedStringKey(rawValue: "TextCheckingResultAttributeName")
+    static let TextCheckingResultAttributeName = NSAttributedString.Key(rawValue: "TextCheckingResultAttributeName")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +35,11 @@ class DataDetectorsSwiftViewController: UIViewController, ZSWTappableLabelTapDel
         detector.enumerateMatches(in: attributedString.string, options: [], range: range) { (result, flags, _) in
             guard let result = result else { return }
             
-            var attributes = [NSAttributedStringKey: Any]()
+            var attributes = [NSAttributedString.Key: Any]()
             attributes[.tappableRegion] = true
             attributes[.tappableHighlightedBackgroundColor] = UIColor.lightGray
             attributes[.tappableHighlightedForegroundColor] = UIColor.white
-            attributes[.underlineStyle] = NSUnderlineStyle.styleSingle.rawValue
+            attributes[.underlineStyle] = NSUnderlineStyle.single.rawValue
             attributes[DataDetectorsSwiftViewController.TextCheckingResultAttributeName] = result
             attributedString.addAttributes(attributes, range: result.range)
         }
@@ -53,7 +53,7 @@ class DataDetectorsSwiftViewController: UIViewController, ZSWTappableLabelTapDel
     
     // MARK: - ZSWTappableLabelTapDelegate
     
-    func tappableLabel(_ tappableLabel: ZSWTappableLabel, tappedAt idx: Int, withAttributes attributes: [NSAttributedStringKey : Any]) {
+    func tappableLabel(_ tappableLabel: ZSWTappableLabel, tappedAt idx: Int, withAttributes attributes: [NSAttributedString.Key : Any]) {
         var URL: URL?
         
         if let result = attributes[DataDetectorsSwiftViewController.TextCheckingResultAttributeName] as? NSTextCheckingResult {

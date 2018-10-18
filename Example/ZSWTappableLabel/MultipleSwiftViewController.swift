@@ -18,7 +18,7 @@ class MultipleSwiftViewController: UIViewController, ZSWTappableLabelTapDelegate
         return label
     }()
     
-    static let URLAttributeName = NSAttributedStringKey(rawValue: "URL")
+    static let URLAttributeName = NSAttributedString.Key(rawValue: "URL")
     
     enum LinkType: String {
         case Privacy = "privacy"
@@ -45,7 +45,7 @@ class MultipleSwiftViewController: UIViewController, ZSWTappableLabelTapDelegate
         options["link"] = .dynamic({ tagName, tagAttributes, stringAttributes in
             guard let typeString = tagAttributes["type"] as? String,
                 let type = LinkType(rawValue: typeString) else {
-                return [NSAttributedStringKey: AnyObject]()
+                    return [NSAttributedString.Key: AnyObject]()
             }
             
             return [
@@ -53,7 +53,7 @@ class MultipleSwiftViewController: UIViewController, ZSWTappableLabelTapDelegate
                 .tappableHighlightedBackgroundColor: UIColor.lightGray,
                 .tappableHighlightedForegroundColor: UIColor.white,
                 .foregroundColor: UIColor.blue,
-                .underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
+                .underlineStyle: NSUnderlineStyle.single.rawValue,
                 MultipleSwiftViewController.URLAttributeName: type.URL
             ]
         })
@@ -69,7 +69,7 @@ class MultipleSwiftViewController: UIViewController, ZSWTappableLabelTapDelegate
     
     // MARK: - ZSWTappableLabelTapDelegate
     
-    func tappableLabel(_ tappableLabel: ZSWTappableLabel, tappedAt idx: Int, withAttributes attributes: [NSAttributedStringKey : Any] = [:]) {
+    func tappableLabel(_ tappableLabel: ZSWTappableLabel, tappedAt idx: Int, withAttributes attributes: [NSAttributedString.Key : Any] = [:]) {
         guard let URL = attributes[SimpleSwiftViewController.URLAttributeName] as? URL else {
             return
         }

@@ -74,7 +74,7 @@ class RootController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.delegate = self
         tableView.dataSource = self
         tableView.estimatedRowHeight = 75
-        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.rowHeight = UITableView.automaticDimension
         tableView.register(RootExampleCell.self, forCellReuseIdentifier: NSStringFromClass(RootExampleCell.self))
     }
     

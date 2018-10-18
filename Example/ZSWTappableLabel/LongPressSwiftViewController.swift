@@ -17,7 +17,7 @@ class LongPressSwiftViewController: UIViewController, ZSWTappableLabelTapDelegat
         return label
     }()
     
-    static let URLAttributeName = NSAttributedStringKey(rawValue: "URL")
+    static let URLAttributeName = NSAttributedString.Key(rawValue: "URL")
     
     enum LinkType: String {
         case Privacy = "privacy"
@@ -46,7 +46,7 @@ class LongPressSwiftViewController: UIViewController, ZSWTappableLabelTapDelegat
         options["link"] = .dynamic({ tagName, tagAttributes, stringAttributes in
             guard let typeString = tagAttributes["type"] as? String,
                 let type = LinkType(rawValue: typeString) else {
-                    return [NSAttributedStringKey: AnyObject]()
+                    return [NSAttributedString.Key: AnyObject]()
             }
             
             return [
@@ -54,7 +54,7 @@ class LongPressSwiftViewController: UIViewController, ZSWTappableLabelTapDelegat
                 .tappableHighlightedBackgroundColor: UIColor.lightGray,
                 .tappableHighlightedForegroundColor: UIColor.white,
                 .foregroundColor: UIColor.blue,
-                .underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
+                .underlineStyle: NSUnderlineStyle.single.rawValue,
                 MultipleSwiftViewController.URLAttributeName: type.URL
             ]
         })
@@ -70,7 +70,7 @@ class LongPressSwiftViewController: UIViewController, ZSWTappableLabelTapDelegat
     
     // MARK: - ZSWTappableLabelTapDelegate
     
-    func tappableLabel(_ tappableLabel: ZSWTappableLabel, tappedAt idx: Int, withAttributes attributes: [NSAttributedStringKey : Any]) {
+    func tappableLabel(_ tappableLabel: ZSWTappableLabel, tappedAt idx: Int, withAttributes attributes: [NSAttributedString.Key : Any]) {
         guard let URL = attributes[SimpleSwiftViewController.URLAttributeName] as? URL else {
             return
         }
@@ -84,7 +84,7 @@ class LongPressSwiftViewController: UIViewController, ZSWTappableLabelTapDelegat
     
     // MARK: - ZSWTappableLabelLongPressDelegate
     
-    func tappableLabel(_ tappableLabel: ZSWTappableLabel, longPressedAt idx: Int, withAttributes attributes: [NSAttributedStringKey : Any]) {
+    func tappableLabel(_ tappableLabel: ZSWTappableLabel, longPressedAt idx: Int, withAttributes attributes: [NSAttributedString.Key : Any]) {
         guard let URL = attributes[SimpleSwiftViewController.URLAttributeName] as? URL else {
             return
         }

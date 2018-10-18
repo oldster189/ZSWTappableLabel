@@ -16,7 +16,7 @@ class SimpleSwiftViewController: UIViewController, ZSWTappableLabelTapDelegate {
         return label
     }()
     
-    static let URLAttributeName = NSAttributedStringKey(rawValue: "URL")
+    static let URLAttributeName = NSAttributedString.Key(rawValue: "URL")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +26,12 @@ class SimpleSwiftViewController: UIViewController, ZSWTappableLabelTapDelegate {
         label.tapDelegate = self
         
         let string = NSLocalizedString("Privacy Policy", comment: "")
-        let attributes: [NSAttributedStringKey: Any] = [
+        let attributes: [NSAttributedString.Key: Any] = [
             .tappableRegion: true,
             .tappableHighlightedBackgroundColor: UIColor.lightGray,
             .tappableHighlightedForegroundColor: UIColor.white,
             .foregroundColor: UIColor.blue,
-            .underlineStyle: NSUnderlineStyle.styleSingle.rawValue,
+            .underlineStyle: NSUnderlineStyle.single.rawValue,
             .link: URL(string: "http://imgur.com/gallery/VgXCk")!
         ]
         
@@ -45,7 +45,7 @@ class SimpleSwiftViewController: UIViewController, ZSWTappableLabelTapDelegate {
     
     // MARK: - ZSWTappableLabelTapDelegate
     
-    func tappableLabel(_ tappableLabel: ZSWTappableLabel, tappedAt idx: Int, withAttributes attributes: [NSAttributedStringKey : Any]) {
+    func tappableLabel(_ tappableLabel: ZSWTappableLabel, tappedAt idx: Int, withAttributes attributes: [NSAttributedString.Key : Any]) {
         guard let URL = attributes[SimpleSwiftViewController.URLAttributeName] as? URL else {
             return
         }

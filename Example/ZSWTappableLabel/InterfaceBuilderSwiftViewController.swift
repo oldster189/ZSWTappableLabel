@@ -40,7 +40,7 @@ class InterfaceBuilderSwiftViewController: UIViewController, ZSWTappableLabelTap
     }
 
     // MARK: - ZSWTappableLabelTapDelegate
-    func tappableLabel(_ tappableLabel: ZSWTappableLabel, tappedAt idx: Int, withAttributes attributes: [NSAttributedStringKey : Any]) {
+    func tappableLabel(_ tappableLabel: ZSWTappableLabel, tappedAt idx: Int, withAttributes attributes: [NSAttributedString.Key : Any]) {
         guard let URL = attributes[.link] as? URL else {
             return
         }
